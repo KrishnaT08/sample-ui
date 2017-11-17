@@ -26,11 +26,11 @@ export class UserService {
 
   }
 
-/*  deleteUserById(employeeId: number): Observable<boolean> {
-    return this.http.delete(this.apiUrl + '/' + employeeId)
+  deleteUserById(id: string): Observable<boolean> {
+    return this.http.delete('${this.apiUrl}/${id}')
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-  }*/
+  }
 
   updateUser(user: User): Observable<User> {
     return this.http.put(this.apiUrl, user)

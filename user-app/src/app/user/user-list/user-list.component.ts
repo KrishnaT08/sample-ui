@@ -35,7 +35,24 @@ export class UserListComponent implements OnInit {
   redirectNewUserPage() {
     this.router.navigate(['/user/create']);
   }
+  
+  editUserPage(user: User) {
+	    if (user) {
+	      this.router.navigate(['/user/edit', user.id]);
+	    }
+	  }
 
+	  deleteUser(user: User) {
+	    if (user) {
+	      this.userService.deleteUserById(user.id).subscribe(
+	        res => {
+	          this.getAllUsers();
+	          this.router.navigate(['/user']);
+	          console.log('done');
+	        }
+	      );
+	    }
+	  }
 
 }
 
